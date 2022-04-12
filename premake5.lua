@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cheese/vendor/Glad/include"
+IncludeDir["ImGui"] = "Cheese/vendor/imgui"
 
 include "Cheese/vendor/GLFW"
 include "Cheese/vendor/GLad"
+include "Cheese/vendor/imgui"
 
 project "Cheese"
 	location "Cheese"
@@ -39,13 +41,15 @@ project "Cheese"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -68,14 +72,17 @@ project "Cheese"
 
 	filter "configurations:Debug"
 		defines "CS_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CS_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CS_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -115,12 +122,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CS_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CS_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CS_DIST"
+		buildoptions "/MD"
 		optimize "On"
