@@ -10,6 +10,11 @@ workspace "Cheese"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
+
+include "Cheese/vendor/GLFW"
+
 project "Cheese"
 	location "Cheese"
 	kind "SharedLib"
@@ -17,6 +22,9 @@ project "Cheese"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "hzpch.h"
+	pchsource "Cheese/src/hzpch.cpp"
 
 	files
 	{
@@ -26,7 +34,15 @@ project "Cheese"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
