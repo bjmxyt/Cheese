@@ -4,10 +4,10 @@
 
 namespace Cheese {
 
-	class CS_API WIndowResizeEvent : public Event
+	class CS_API WindowResizeEvent : public Event
 	{
 	public:
-		WIndowResizeEvent(unsigned int width, unsigned int height)
+		WindowResizeEvent(unsigned int width, unsigned int height)
 			: m_Width(width), m_Height(height) { }
 
 		inline unsigned int GetWidth() const { return m_Width; }

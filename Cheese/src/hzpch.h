@@ -14,6 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Cheese/Log.h"
+
 #ifdef CS_PLATFORM_WINDOWS
 #include <Windows.h>
 #endif

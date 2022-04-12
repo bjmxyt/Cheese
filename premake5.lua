@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
+IncludeDir["Glad"] = "Cheese/vendor/Glad/include"
 
 include "Cheese/vendor/GLFW"
+include "Cheese/vendor/GLad"
 
 project "Cheese"
 	location "Cheese"
@@ -36,12 +38,14 @@ project "Cheese"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -53,7 +57,8 @@ project "Cheese"
 		defines
 		{
 			"CS_PLATFORM_WINDOWS",
-			"CS_BUILD_DLL"
+			"CS_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

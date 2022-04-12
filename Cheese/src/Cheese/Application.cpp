@@ -1,14 +1,18 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Cheese/Events/ApplicationEvent.h"
 #include "Cheese/Log.h"
+
+#include <glad/glad.h>
 
 namespace Cheese {
 
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application()
@@ -16,23 +20,47 @@ namespace Cheese {
 
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::Run()
 	{
-		WIndowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategory::EventCategoryApplication))
+		while (m_Running)
 		{
-			CS_TRACE(e);
-		}
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
 
-		if (e.IsInCategory(EventCategory::EventCategoryInput))
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
+			m_Window->OnUpdate();
+		}
+	}
+
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
-			CS_TRACE(e);
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
 		}
+	}
 
-		while (true)
-		{
-
-		}
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 
 }
