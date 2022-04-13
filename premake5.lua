@@ -15,14 +15,17 @@ IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cheese/vendor/Glad/include"
 IncludeDir["ImGui"] = "Cheese/vendor/imgui"
 
-include "Cheese/vendor/GLFW"
-include "Cheese/vendor/GLad"
-include "Cheese/vendor/imgui"
+group "Dependencies"
+	include "Cheese/vendor/GLFW"
+	include "Cheese/vendor/Glad"
+	include "Cheese/vendor/imgui"
 
 project "Cheese"
 	location "Cheese"
 	kind "SharedLib"
 	language "C++"
+	--dll
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +58,6 @@ project "Cheese"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -67,28 +69,29 @@ project "Cheese"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "CS_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -112,7 +115,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -122,15 +124,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CS_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
