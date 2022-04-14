@@ -1,5 +1,6 @@
 workspace "Cheese"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -14,11 +15,11 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cheese/vendor/Glad/include"
 IncludeDir["ImGui"] = "Cheese/vendor/imgui"
+IncludeDir["glm"] = "Cheese/vendor/glm"
 
-group "Dependencies"
-	include "Cheese/vendor/GLFW"
-	include "Cheese/vendor/Glad"
-	include "Cheese/vendor/imgui"
+include "Cheese/vendor/GLFW"
+include "Cheese/vendor/Glad"
+include "Cheese/vendor/imgui"
 
 project "Cheese"
 	location "Cheese"
@@ -36,7 +37,9 @@ project "Cheese"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -45,7 +48,8 @@ project "Cheese"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -105,7 +109,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Cheese/vendor/spdlog/include",
-		"Cheese/src"
+		"Cheese/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

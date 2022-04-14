@@ -10,8 +10,13 @@
 	#error Cheese only supports Windows!
 #endif
 
-#ifdef HZ_ENABLE_ASSERTS
-	#define CS_ASSERT(x, ...) { if(!(x)) { CS_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#ifdef CS_DEBUG
+	#define CS_ENABLE_ASSERTS
+#endif
+
+
+#ifdef CS_ENABLE_ASSERTS
+	#define CS_ASSERT(x, ...) { if(!(x)) { CS_ERROR("Assertion Failed: {0}", __VA_ARGS__);  __debugbreak(); } }
 	#define CS_CORE_ASSERT(x, ...) { if(!(x)) { CS_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define CS_ASSERT(x, ...)

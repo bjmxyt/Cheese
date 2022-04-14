@@ -10,12 +10,15 @@ public:
 
 	void OnUpdate() override
 	{
-		CS_INFO("ExampleLayer::Update");
+		if (Cheese::Input::IsKeyPressed(CS_KEY_TAB))
+		{
+			CS_TRACE("Tab is down");
+		}
 	}
 
 	void OnEvent(Cheese::Event& event) override
 	{
-		CS_TRACE("{0}", event);
+
 	}
 
 };
