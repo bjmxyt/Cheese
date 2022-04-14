@@ -62,6 +62,7 @@ namespace Cheese {
 				layer->OnUpdate();
 
 			m_Window->OnUpdate();
+
 		}
 	}
 

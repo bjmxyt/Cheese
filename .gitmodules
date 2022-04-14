@@ -4,9 +4,6 @@
 [submodule "Cheese/vendor/glfw"]
 	path = Cheese/vendor/glfw
 	url = git@github.com:TheCherno/glfw.git
-[submodule "Cheese/vendor/imgui"]
-	path = Cheese/vendor/imgui
-	url = git@github.com:TheCherno/imgui.git
 [submodule "Cheese/vendor/glm"]
 	path = Cheese/vendor/glm
 	url = git@github.com:g-truc/glm.git
