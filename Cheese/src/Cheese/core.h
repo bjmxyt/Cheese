@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef CS_PLATFORM_WINDOWS
-	#ifdef CS_BUILD_DLL
-		#define CS_API __declspec(dllexport)
+	#if CS_DYNAMIC_LINK
+		#ifdef CS_BUILD_DLL
+			#define CS_API __declspec(dllexport)
+		#else		
+			#define CS_API __declspec(dllimport)
+		#endif
 	#else
-		#define CS_API __declspec(dllimport)
+		#define CS_API
 	#endif
 #else
 	#error Cheese only supports Windows!

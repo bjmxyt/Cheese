@@ -8,6 +8,7 @@ public:
 	ExampleLayer()
 		: Layer("Example")
 	{
+
 	}
 
 	void OnUpdate() override
@@ -16,6 +17,13 @@ public:
 		{
 			CS_TRACE("Tab is down");
 		}
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello world");
+		ImGui::End();
 	}
 
 	void OnEvent(Cheese::Event& event) override
