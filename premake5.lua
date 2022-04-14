@@ -110,6 +110,7 @@ project "Sandbox"
 	{
 		"Cheese/vendor/spdlog/include",
 		"Cheese/src",
+		"Cheese/vendor",
 		"%{IncludeDir.glm}"
 	}
 

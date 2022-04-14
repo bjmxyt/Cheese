@@ -7,6 +7,8 @@
 #include "Cheese/Events/Event.h"
 #include "Cheese/Events/ApplicationEvent.h"
 
+#include "Cheese/ImGui/ImGuiLayer.h"
+
 namespace Cheese {
 
 	class CS_API Application
@@ -29,6 +31,7 @@ namespace Cheese {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

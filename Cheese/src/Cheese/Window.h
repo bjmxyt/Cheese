@@ -13,9 +13,9 @@ namespace Cheese {
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Hazel Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+		WindowProps(const std::string& title = "Cheese Engine",
+			unsigned int width = 2560,
+			unsigned int height = 1440)
 			: Title(title), Width(width), Height(height)
 		{
 		}

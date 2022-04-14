@@ -1,5 +1,7 @@
 #include <Cheese.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Cheese::Layer
 {
 public:
@@ -29,7 +31,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Cheese::ImGuiLayer());
 	}
 
 	~Sandbox()
