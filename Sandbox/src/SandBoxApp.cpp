@@ -28,7 +28,7 @@ public:
 
 	void OnEvent(Cheese::Event& event) override
 	{
-
+		//CS_TRACE(event);
 	}
 
 };
