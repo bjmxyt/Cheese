@@ -13,6 +13,8 @@
 #include "Cheese/Renderer/Buffer.h"
 #include "Cheese/Renderer/VertexArray.h"
 
+#include "Cheese/Renderer/OrthographicCamera.h"
+
 namespace Cheese {
 
 	class CS_API Application
@@ -44,6 +46,8 @@ namespace Cheese {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
