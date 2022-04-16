@@ -18,6 +18,12 @@ namespace Cheese {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		CS_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+
+		CS_CORE_INFO("OpenGL Info:");
+		CS_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		CS_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		CS_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()
