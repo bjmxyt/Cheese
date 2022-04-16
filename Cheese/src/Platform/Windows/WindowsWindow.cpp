@@ -5,7 +5,7 @@
 #include "Cheese/Events/MouseEvent.h"
 #include "Cheese/Events/KeyEvent.h"
 
-#include "Platform/Windows/OpenGL/OpenGLContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Cheese {
 	static bool s_GLFWInitialized = false;

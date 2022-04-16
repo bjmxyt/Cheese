@@ -10,6 +10,8 @@
 #include "Cheese/ImGui/ImGuiLayer.h"
 
 #include "Cheese/Renderer/Shader.h"
+#include "Cheese/Renderer/Buffer.h"
+#include "Cheese/Renderer/VertexArray.h"
 
 namespace Cheese {
 
@@ -37,8 +39,11 @@ namespace Cheese {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_BlueShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	private:
 		static Application* s_Instance;
 	};
