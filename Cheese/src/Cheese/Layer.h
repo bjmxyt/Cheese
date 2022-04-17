@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Cheese/Core.h"
+#include "Cheese/Core/Timestep.h"
 #include "Cheese/Events/Event.h"
 
 namespace Cheese {
@@ -13,7 +14,7 @@ namespace Cheese {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {};
 		virtual void OnEvent(Event& event) {}
 

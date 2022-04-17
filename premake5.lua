@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "Cheese/vendor/GLFW/include"
 IncludeDir["Glad"] = "Cheese/vendor/Glad/include"
 IncludeDir["ImGui"] = "Cheese/vendor/imgui"
 IncludeDir["glm"] = "Cheese/vendor/glm"
+IncludeDir["stb_image"] = "Cheese/vendor/stb_image"
 
 include "Cheese/vendor/GLFW"
 include "Cheese/vendor/Glad"
@@ -39,6 +40,8 @@ project "Cheese"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -55,7 +58,8 @@ project "Cheese"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

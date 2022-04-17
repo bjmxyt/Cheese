@@ -7,13 +7,9 @@
 #include "Cheese/Events/Event.h"
 #include "Cheese/Events/ApplicationEvent.h"
 
+#include "Cheese/Core/Timestep.h"
 #include "Cheese/ImGui/ImGuiLayer.h"
 
-#include "Cheese/Renderer/Shader.h"
-#include "Cheese/Renderer/Buffer.h"
-#include "Cheese/Renderer/VertexArray.h"
-
-#include "Cheese/Renderer/OrthographicCamera.h"
 
 namespace Cheese {
 
@@ -36,18 +32,13 @@ namespace Cheese {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
