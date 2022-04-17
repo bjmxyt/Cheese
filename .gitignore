@@ -11,6 +11,8 @@ bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+**.sln.DotSettings.user
+Sandbox/imgui.ini
 
 # Directories
 Hazel/vendor/VulkanSDK
