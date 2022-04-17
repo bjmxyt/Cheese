@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cheese/Core.h"
+#include "Cheese/Core/Core.h"
 #include "Cheese/Core/Timestep.h"
 #include "Cheese/Events/Event.h"
 

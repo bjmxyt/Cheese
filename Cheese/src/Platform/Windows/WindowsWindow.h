@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cheese/Window.h"
+#include "Cheese/Core/Window.h"
 #include "Cheese/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

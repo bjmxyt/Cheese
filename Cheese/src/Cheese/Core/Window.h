@@ -2,7 +2,7 @@
 
 #include "hzpch.h"
 
-#include "Cheese/Core.h"
+#include "Cheese/Core/Core.h"
 #include "Cheese/Events/Event.h"
 
 namespace Cheese {

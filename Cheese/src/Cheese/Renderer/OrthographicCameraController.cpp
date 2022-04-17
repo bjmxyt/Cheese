@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Cheese/Input.h"
-#include "Cheese/KeyCodes.h"
+#include "Cheese/Core/Input.h"
+#include "Cheese/Core/KeyCodes.h"
 
 namespace Cheese {
 

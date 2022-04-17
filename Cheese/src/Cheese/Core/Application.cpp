@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Cheese/Log.h"
+#include "Cheese/Core/Log.h"
 
 #include "Cheese/Renderer/Renderer.h"
 

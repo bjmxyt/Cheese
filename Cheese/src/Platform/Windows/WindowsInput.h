@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cheese/Input.h"
+#include "Cheese/Core/Input.h"
 
 namespace Cheese {
 

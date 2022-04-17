@@ -4,7 +4,7 @@
 #include "imgui.h"
 #include "ImGuiBuild.h"
 
-#include "Cheese/Application.h"
+#include "Cheese/Core/Application.h"
 
 // TEMPORARY
 #include <GLFW/glfw3.h>

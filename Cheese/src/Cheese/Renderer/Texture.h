@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Cheese/Core.h"
+#include "Cheese/Core/Core.h"
 
 namespace Cheese {
 

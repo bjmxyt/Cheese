@@ -3,16 +3,16 @@
 // For use by Hazel applications
 
 
-#include "Cheese/Application.h"
-#include "Cheese/Layer.h"
-#include "Cheese/Log.h"
+#include "Cheese/Core/Application.h"
+#include "Cheese/Core/Layer.h"
+#include "Cheese/Core/Log.h"
 
 #include "Cheese/Core/Timestep.h"
 
-#include "Cheese/Input.h"
-#include "Cheese/KeyCodes.h"
-#include "Cheese/MouseButtonCodes.h"
-#include "Cheese/OrthographicCameraController.h"
+#include "Cheese/Core/Input.h"
+#include "Cheese/Core/KeyCodes.h"
+#include "Cheese/Core/MouseButtonCodes.h"
+#include "Cheese/Renderer/OrthographicCameraController.h"
 
 #include "Cheese/ImGui/ImGuiLayer.h"
 
@@ -29,5 +29,5 @@
 //------------------------------------
 
 // ---Entry Point---------------------
-#include "Cheese/EntryPoint.h"
+#include "Cheese/Core/EntryPoint.h"
 // -----------------------------------
