@@ -101,7 +101,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Cheese::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Cheese::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		/// <summary>
 		/// m_FlatColorShader
@@ -138,51 +138,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Cheese::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Cheese::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		/// <summary>
-		/// m_TextureShader
-		/// </summary>
-		std::string textureShaderVertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-			}
-		)";
-
-		std::string textureShaderFragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec2 v_TexCoord;
-			
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader.reset(Cheese::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Cheese::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Cheese::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Cheese::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Cheese::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Cheese::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Cheese::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Cheese::Timestep ts) override
@@ -225,10 +189,12 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Cheese::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Cheese::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_ChernoLogoTexture->Bind();
-		Cheese::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Cheese::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		Cheese::Renderer::EndScene();
 	}
@@ -245,10 +211,11 @@ public:
 		//CS_TRACE(event);
 	}
 private:
+	Cheese::ShaderLibrary m_ShaderLibrary;
 	Cheese::Ref<Cheese::Shader> m_Shader;
 	Cheese::Ref<Cheese::VertexArray> m_VertexArray;
-			
-	Cheese::Ref<Cheese::Shader> m_FlatColorShader, m_TextureShader;
+
+	Cheese::Ref<Cheese::Shader> m_FlatColorShader;
 	Cheese::Ref<Cheese::VertexArray> m_SquareVA;
 		
 	Cheese::Ref<Cheese::Texture2D> m_Texture, m_ChernoLogoTexture;
