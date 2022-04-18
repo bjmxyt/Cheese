@@ -156,7 +156,7 @@ namespace Cheese {
 	};
 }
 
-#define CS_PROFILE 1
+#define CS_PROFILE 0
 #if CS_PROFILE
 #define CS_PROFILE_BEGIN_SESSION(name, filepath) ::Cheese::Instrumentor::Get().BeginSession(name, filepath)
 #define CS_PROFILE_END_SESSION() ::Cheese::Instrumentor::Get().EndSession()
