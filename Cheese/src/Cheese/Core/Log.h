@@ -27,12 +27,12 @@ namespace Cheese {
 #define CS_CORE_INFO(...)     ::Cheese::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define CS_CORE_WARN(...)     ::Cheese::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define CS_CORE_ERROR(...)    ::Cheese::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define CS_CORE_FATAL(...)    ::Cheese::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define CS_CORE_CRITICAL(...) ::Cheese::Log::GetCoreLogger()->critical(__VA_ARGS__)
 							
 // ClienCSlog macros			
-#define CS_TRACE(...)	      ::Cheese::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define CS_INFO(...)	      ::Cheese::Log::GetClientLogger()->info(__VA_ARGS__)
-#define CS_WARN(...)	      ::Cheese::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define CS_ERROR(...)	      ::Cheese::Log::GetClientLogger()->error(__VA_ARGS__)
-#define CS_FATAL(...)	      ::Cheese::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define CS_TRACE(...)         ::Cheese::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define CS_INFO(...)          ::Cheese::Log::GetClientLogger()->info(__VA_ARGS__)
+#define CS_WARN(...)          ::Cheese::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define CS_ERROR(...)         ::Cheese::Log::GetClientLogger()->error(__VA_ARGS__)
+#define CS_CRITICAL(...)      ::Cheese::Log::GetClientLogger()->critical(__VA_ARGS__)
 

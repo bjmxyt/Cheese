@@ -11,7 +11,7 @@
 
 #include "Cheese/Core/Input.h"
 #include "Cheese/Core/KeyCodes.h"
-#include "Cheese/Core/MouseButtonCodes.h"
+#include "Cheese/Core/MouseCodes.h"
 #include "Cheese/Renderer/OrthographicCameraController.h"
 
 #include "Cheese/ImGui/ImGuiLayer.h"

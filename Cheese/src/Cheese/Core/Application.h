@@ -10,6 +10,7 @@
 #include "Cheese/Core/Timestep.h"
 #include "Cheese/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
 
 namespace Cheese {
 
@@ -18,8 +19,6 @@ namespace Cheese {
 	public:
 		Application();
 		virtual ~Application();
-
-		void Run();
 
 		void OnEvent(Event& e);
 
@@ -34,6 +33,7 @@ namespace Cheese {
 		bool OnWindowResize(WindowResizeEvent& e);
 
 	private:
+		void Run();
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -43,6 +43,7 @@ namespace Cheese {
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	// To be defined in CLIENT
