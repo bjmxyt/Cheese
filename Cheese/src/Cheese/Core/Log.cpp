@@ -1,11 +1,11 @@
 #include "hzpch.h"
-#include "Log.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include "Cheese/Core/Log.h"
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace Cheese {
 
-	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	Ref<spdlog::logger> Log::s_CoreLogger;
+	Ref<spdlog::logger> Log::s_ClientLogger;
 
 	void Log::Init()
 	{

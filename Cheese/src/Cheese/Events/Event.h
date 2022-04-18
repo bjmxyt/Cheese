@@ -1,6 +1,6 @@
 #pragma once
-
 #include "hzpch.h"
+
 #include "Cheese/Core/core.h"
 
 namespace Cheese {

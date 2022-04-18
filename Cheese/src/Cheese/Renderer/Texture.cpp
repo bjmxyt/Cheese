@@ -1,7 +1,7 @@
 #include "hzpch.h"
-#include "Texture.h"
 
-#include "Renderer.h"
+#include "Cheese/Renderer/Texture.h"
+#include "Cheese/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Cheese {

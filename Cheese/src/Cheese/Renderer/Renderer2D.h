@@ -1,8 +1,8 @@
 #pragma once
 
-#include "OrthographicCamera.h"
+#include "Cheese/Renderer/OrthographicCamera.h"
 
-#include "Texture.h"
+#include "Cheese/Renderer/Texture.h"
 
 namespace Cheese {
 

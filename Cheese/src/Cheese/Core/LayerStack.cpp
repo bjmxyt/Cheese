@@ -1,12 +1,7 @@
 #include "hzpch.h"
-#include "LayerStack.h"
+#include "Cheese/Core/LayerStack.h"
 
 namespace Cheese {
-
-	LayerStack::LayerStack()
-	{
-
-	}
 
 	LayerStack::~LayerStack()
 	{

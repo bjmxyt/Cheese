@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Cheese/Core/Core.h"
-#include "Layer.h"
+#include "Cheese/Core/Layer.h"
 
 #include <vector>
 
@@ -10,7 +10,7 @@ namespace Cheese {
 	class CS_API LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);
