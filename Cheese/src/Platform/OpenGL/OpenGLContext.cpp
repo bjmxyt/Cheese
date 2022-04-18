@@ -15,6 +15,8 @@ namespace Cheese {
 
 	void OpenGLContext::Init()
 	{
+		CS_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		CS_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -37,6 +39,8 @@ namespace Cheese {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		CS_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 

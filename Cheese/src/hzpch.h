@@ -16,6 +16,7 @@
 #include <unordered_set>
 
 #include "Cheese/Core/Log.h"
+#include "Cheese/Debug/Instrumentor.h"
 
 #ifdef CS_PLATFORM_WINDOWS
 #include <Windows.h>

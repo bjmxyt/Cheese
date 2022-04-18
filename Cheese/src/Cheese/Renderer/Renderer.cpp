@@ -13,6 +13,8 @@ namespace Cheese {
 
 	void Renderer::Init()
 	{
+		CS_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}
