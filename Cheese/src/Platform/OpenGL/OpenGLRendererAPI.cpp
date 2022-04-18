@@ -61,7 +61,10 @@ namespace Cheese {
 	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
 	{
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-		glBindTexture(GL_TEXTURE, 0);
+
+		//TODO: use GL_TEXTURE this will cause openGL error: GL_INVALID_ENUM error generated. Invalid target.
+		//TODO: but use GL_TEXTURE_2D is ok
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 }
